@@ -49,3 +49,6 @@
   margin-top: 5px;
   padding: 10px;
 }
+.strike {
+  text-decoration: line-through;
+}

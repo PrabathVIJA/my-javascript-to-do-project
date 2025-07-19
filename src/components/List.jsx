@@ -1,5 +1,5 @@
 import SingleToDo from "./SingleToDo.jsx";
-export default function List({ listOfTask, deleteHandler }) {
+export default function List({ listOfTask, deleteHandler, doneHandler }) {
   return (
     <>
       {listOfTask.map((task) => (
@@ -7,6 +7,7 @@ export default function List({ listOfTask, deleteHandler }) {
           singleTask={task}
           key={task.id}
           deleteHandler={deleteHandler}
+          doneHandler={doneHandler}
         />
       ))}
     </>

@@ -1,8 +1,9 @@
 import { MdDone, MdDelete, MdEdit } from "react-icons/md";
 import { useState } from "react";
-export default function SingleToDo({ singleTask, deleteHandler }) {
+export default function SingleToDo({ singleTask, deleteHandler, doneHandler }) {
   const [edit, setEdit] = useState(false);
   const [individualTask, setIndividualTask] = useState(singleTask.title);
+
   return (
     <>
       <div className="Task">
@@ -12,10 +13,15 @@ export default function SingleToDo({ singleTask, deleteHandler }) {
             onChange={(e) => setIndividualTask(e.target.value)}
           />
         ) : (
-          <span>{individualTask}</span>
+          <span className={singleTask.done ? "strike" : ""}>
+            {individualTask}
+          </span>
         )}
 
-        <MdDone />
+        <button onClick={() => doneHandler(singleTask.id)}>
+          <MdDone />
+        </button>
+
         <button onClick={() => deleteHandler(singleTask.id)}>
           <MdDelete />
         </button>

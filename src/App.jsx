@@ -20,6 +20,10 @@ function App() {
   }
 
   function addTaskHandler() {
+    if (task === "") {
+      alert("Please enter something");
+      return;
+    }
     setListOfTasks([
       ...listOfTasks,
       { id: nanoid(), title: task, done: false },
@@ -31,6 +35,20 @@ function App() {
     setListOfTasks(updatedTasks);
   }
 
+  function doneHandler(id) {
+    const updatedTasks = listOfTasks.map((task) => {
+      if (task.id === id) {
+        return {
+          ...task,
+          done: !task.done,
+        };
+      } else {
+        return task;
+      }
+    });
+    setListOfTasks(updatedTasks);
+  }
+
   return (
     <>
       <Input
@@ -39,7 +57,11 @@ function App() {
         placeholder="enter the task"
       />
       <button onClick={addTaskHandler}>Add</button>
-      <List listOfTask={listOfTasks} deleteHandler={handleDelete} />
+      <List
+        listOfTask={listOfTasks}
+        deleteHandler={handleDelete}
+        doneHandler={doneHandler}
+      />
     </>
   );
 }
