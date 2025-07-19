@@ -19,9 +19,10 @@ export default function SingleToDo({ singleTask, deleteHandler }) {
         <button onClick={() => deleteHandler(singleTask.id)}>
           <MdDelete />
         </button>
-        <button onClick={() => setEdit((prev) => !prev)}>
+        <button onClick={() => setEdit(true)}>
           <MdEdit />
         </button>
+        <button onClick={() => setEdit(false)}>Save</button>
       </div>
     </>
   );
